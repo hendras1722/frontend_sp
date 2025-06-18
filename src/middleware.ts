@@ -72,18 +72,18 @@ export async function middleware(request: NextRequest) {
  
 
   // Host validation
-  if (config.allowedHosts?.length) {
-    const host = request.headers.get('host')
-    if (host && !config.allowedHosts.includes(host)) {
-      return new NextResponse('Invalid Host header', { status: 400 })
-    }
-  }
+  // if (config.allowedHosts?.length) {
+  //   const host = request.headers.get('host')
+  //   if (host && !config.allowedHosts.includes(host)) {
+  //     return new NextResponse('Invalid Host header', { status: 400 })
+  //   }
+  // }
 
   // Force SSL in production
-  if (config.ssl && url.protocol === 'http:') {
-    url.protocol = 'https:'
-    return NextResponse.redirect(url)
-  }
+  // if (config.ssl && url.protocol === 'http:') {
+  //   url.protocol = 'https:'
+  //   return NextResponse.redirect(url)
+  // }
 
   if (!token && isProtectedRoute && pathname.includes('/admin/user')) {
     // request.cookies.delete('token')

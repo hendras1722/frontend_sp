@@ -1,8 +1,6 @@
 import type { NextConfig } from 'next'
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_BASE_URL ||
-  'http://bkgsskk8co0s4ck0ws4444kw.103.181.182.113.sslip.io'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://bkgsskk8co0s4ck0ws4444kw.103.181.182.113.sslip.io'
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -42,7 +40,7 @@ const nextConfig: NextConfig = {
       {
         source: '/',
         destination: `${process.env.NEXT_PUBLIC_BASE_URL}/admin/dashboard`,
-        permanent: true,
+        permanent: false,
       },
     ]
   },

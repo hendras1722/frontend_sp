@@ -65,7 +65,7 @@ export async function middleware(request: NextRequest) {
   response.headers.set('Pragma', 'no-cache')
   response.headers.set('Expires', '-1')
 
-  if (request.cookies.get('me')) { 
+  if (!request.cookies.get('me')) { 
     const getMe = await axiosFetch.get<{ data: { profile: Profile } }>('/me')
     response.cookies.set('me', JSON.stringify(getMe.data.profile))
   }
@@ -104,7 +104,6 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     '/admin/:path*',
-    '/login',
     '/((?!_next/static|_next/image|favicon.ico).*)',
   ],
 }

@@ -4,8 +4,8 @@ import Cookies from 'js-cookie'
 const baseURL =
   typeof window !== 'undefined'
     ? '/v1/'
-    :' process.env.NEXT_PUBLIC_BASE_URL' + '/v1/'
-console.log('Base URL:',' process.env.NEXT_PUBLIC_BASE_URL')
+    : process.env.NEXT_PUBLIC_BASE_URL+ '/v1/'
+console.log('Base URL:',process.env.NEXT_PUBLIC_BASE_URL)
 axios.defaults.baseURL = baseURL
 
 const getToken = async (): Promise<string | undefined> => {

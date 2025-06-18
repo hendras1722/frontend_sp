@@ -41,14 +41,10 @@ export default function Component({ open, onOpenChange, reFetch }) {
     setShowTodo(false)
   }
 
-  const modalRef = (typeof window !== 'undefined' &&
-    useClickOutside<HTMLDivElement>(handleClickOutside, {
-      ignore: ['.ignore-me'], // Optional CSS selectors or elements to ignore
-      detectIframe: true, // Optional iframe detection
-    })) || {
-    get: () => '',
-    has: () => false,
-  }
+  const modalRef = useClickOutside<HTMLDivElement>(handleClickOutside, {
+    ignore: ['.ignore-me'], // Optional CSS selectors or elements to ignore
+    detectIframe: true, // Optional iframe detection
+  })
   const [status, setStatus] = useState('')
 
   async function refresh() {

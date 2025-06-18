@@ -1,5 +1,7 @@
 import type { NextConfig } from 'next'
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+
 const nextConfig: NextConfig = {
   /* config options here */
   async rewrites() {
@@ -7,19 +9,19 @@ const nextConfig: NextConfig = {
       afterFiles: [
         {
           source: '/v1/:path*',
-          destination: 'http://localhost:3000/v1/:path*',
+          destination: BASE_URL + '/v1/:path*',
         },
       ],
       beforeFiles: [
         {
           source: '/v1/:path*',
-          destination: 'http://localhost:3000/v1/:path*',
+          destination: BASE_URL + '/v1/:path*',
         },
       ],
       fallback: [
         {
           source: '/v1/:path*',
-          destination: 'http://localhost:3000/v1/:path*',
+          destination: BASE_URL + '/v1/:path*',
         },
       ],
     }

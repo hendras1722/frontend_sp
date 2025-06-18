@@ -1,6 +1,8 @@
 import type { NextConfig } from 'next'
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+const BASE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL ||
+  'http://bkgsskk8co0s4ck0ws4444kw.103.181.182.113.sslip.io'
 
 const nextConfig: NextConfig = {
   /* config options here */

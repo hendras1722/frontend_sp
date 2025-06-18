@@ -54,7 +54,7 @@ export async function middleware(request: NextRequest) {
   const response = NextResponse.next()
   const url = new URL(request.url)
 
-  const token = request.cookies.get('token')
+  const token = request.cookies.get('accessToken')
   const { pathname } = new URL(request.url)
 
   const isProtectedRoute = pathname.startsWith('/admin')
@@ -67,7 +67,7 @@ export async function middleware(request: NextRequest) {
 
   if (request.cookies.get('me')) { 
     const getMe = await axiosFetch.get<{ data: { profile: Profile } }>('/me')
-   response.cookies.set('me', JSON.stringify(getMe.data.profile))
+    response.cookies.set('me', JSON.stringify(getMe.data.profile))
   }
  
 
@@ -85,11 +85,8 @@ export async function middleware(request: NextRequest) {
   //   return NextResponse.redirect(url)
   // }
 
-  if (!token && isProtectedRoute && pathname.includes('/admin/user')) {
-    // request.cookies.delete('token')
-
+  if (!token && isProtectedRoute && pathname.includes('/')) {
     const loginUrl = new URL('/login', request.url)
-    // loginUrl.searchParams.set('redirect', pathname)
     return NextResponse.redirect(loginUrl, { status: 308 })
   }
 

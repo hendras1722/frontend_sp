@@ -39,7 +39,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/',
-        destination: '/admin/dashboard',
+        destination: `${process.env.NEXT_PUBLIC_BASE_URL}/admin/dashboard`,
         permanent: true,
       },
     ]
